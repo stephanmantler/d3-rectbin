@@ -3,6 +3,10 @@
 Rectangular binning for 2d histogram.
  
 
+## Demo
+
+[Demo on blockbuilder](http://blockbuilder.org/fabid/a1a7d04bdd34c2096eaf)
+
 ## API Reference
 
 The **d3.rectbin** plugin implements **rectangular binning**, which is useful for aggregating data into a more coarse representation suitable for display. Rather than displaying a scatterplot with tens of thousands of points, you can bin points into gridded hexagons, and then display the distribution using color or area. This plugin was inspired by and adapted from [earlier work by Fabio Nelli on 2d histograms](http://www.meccanismocomplesso.org/en/d3-histogram-2d-rectangular-binning/).
