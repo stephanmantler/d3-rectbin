@@ -8,8 +8,6 @@
 
     function rectbin(points) {
       var binsById = {};
-      var xExtent = d3.extent(points, function(d, i){ return x.call(rectbin, d, i) ;});
-      var yExtent = d3.extent(points, function(d, i){ return y.call(rectbin, d, i) ;});
       
       points.forEach(function(point, i) {
         var py = y.call(rectbin, point, i) / dy;
