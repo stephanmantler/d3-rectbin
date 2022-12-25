@@ -8,6 +8,7 @@
 
     function rectbin(points) {
       var binsById = {};
+      var minMax = {};
       
       points.forEach(function(point, i) {
         var py = y.call(rectbin, point, i) / dy;
@@ -31,8 +32,27 @@
         //bin.push(point);
         bin.count = bin.count + 1;
         binsById[id] = bin;
+
+        var mm = pi;
+        if(! (mm in minMax)) {
+          minMax[mm] = [];
+          var mmbin = minMax[mm];
+          mmbin.i = pi;
+          mmbin.x = pi * dx;
+          mmbin.min = y.call(rectbin, point, i);
+          mmbin.max = y.call(rectbin, point, i);
+          mmbin.maxCount = bin.count;
+          minMax[mm] = mmbin;
+        }
+        else {
+          var mmbin = minMax[mm];
+          mmbin.min = Math.min(mmbin.min, y.call(rectbin, point, i));
+          mmbin.max = Math.max(mmbin.max, y.call(rectbin, point, i));
+          mmbin.maxCount = Math.max(mmbin.maxCount, bin.count);
+          minMax[mm] = mmbin;
+        }
       });
-      return d3.values(binsById);
+      return { values: d3.values(binsById), minMax: d3.values(minMax) };
     }
 
     rectbin.x = function(_) {
@@ -69,5 +89,5 @@
 })();
 
 function trunc(x) {
-  return x < 0 ? Math.ceil(x) : Math.floor(x);
+  return Math.floor(x);
 }
