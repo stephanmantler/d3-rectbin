@@ -24,10 +24,13 @@
           bin2.j = pj;
           bin2.x = pi * dx;
           bin2.y = pj * dy;
+          bin2.count = 0
         }
         
         var bin = binsById[id];
-        bin.push(point);
+        //bin.push(point);
+        bin.count = bin.count + 1;
+        binsById[id] = bin;
       });
       return d3.values(binsById);
     }
