@@ -41,6 +41,7 @@
           mmbin.x = pi * dx;
           mmbin.min = y.call(rectbin, point, i);
           mmbin.max = y.call(rectbin, point, i);
+          mmbin.total = 1;
           mmbin.maxCount = bin.count;
           minMax[mm] = mmbin;
         }
@@ -48,6 +49,7 @@
           var mmbin = minMax[mm];
           mmbin.min = Math.min(mmbin.min, y.call(rectbin, point, i));
           mmbin.max = Math.max(mmbin.max, y.call(rectbin, point, i));
+          mmbin.total = mmbin.total + 1;
           mmbin.maxCount = Math.max(mmbin.maxCount, bin.count);
           minMax[mm] = mmbin;
         }
